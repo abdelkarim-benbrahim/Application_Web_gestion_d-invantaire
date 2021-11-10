@@ -1,0 +1,92 @@
+<%- include('partials/header'); -%>
+
+<!-- ACTIONS -->
+<section id="actions" class="py-4 mb-4 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <a href="/addProduct" class="btn btn-primary btn-block">
+          <i class="fas fa-plus"></i> Ajouter produit
+        </a>
+      </div>
+      <div class="col-md-3">
+        <a href="/searchProduct" class="btn btn-success btn-block">
+          <i class="fas fa-plus"></i> Modifier produit
+        </a>
+      </div>
+      <div class="col-md-3">
+        <a href="/deleteProduct" class="btn btn-warning btn-block">
+          <i class="fas fa-minus"></i> Supprimer produit
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADD POST MODAL -->
+
+<div class="" id="addPostModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <%- include('partials/messages'); -%>
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">Informations du produit</h5>
+      </div>
+      <div class="modal-body">
+        <form action="/addProduct" method="POST">
+          <div class="form-group">
+            <label for="title">Code barre</label>
+            <input
+              class="form-control"
+              name="code"
+              value="<%= typeof code != 'undefined' ? code : '' %>"
+            />
+          </div>
+          <div class="form-group">
+            <label for="title">Nom produit</label>
+            <input
+              type="text"
+              class="form-control"
+              name="nom"
+              value="<%= typeof nom != 'undefined' ? nom : '' %>"
+            />
+          </div>
+          <div class="form-group">
+            <label for="title">Fournisseur</label>
+            <input
+              type="text"
+              class="form-control"
+              name="four"
+              value="<%= typeof four != 'undefined' ? four : '' %>"
+            />
+          </div>
+          <div class="form-group">
+            <label for="title">Quantite</label>
+            <input
+              class="form-control"
+              name="qte"
+              value="<%= typeof qte != 'undefined' ? qte : '' %>"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="body">Date</label>
+            <input
+              type="text"
+              class="form-control"
+              name="date"
+              value="<%= typeof date != 'undefined' ? date : '' %>"
+            />
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" data-dismiss="modal">
+              Enregister le produit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer'); -%>

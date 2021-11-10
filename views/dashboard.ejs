@@ -1,0 +1,108 @@
+<%- include('partials/header'); -%>
+
+<!-- ACTIONS -->
+<section id="actions" class="py-4 mb-4 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <a href="/addProduct" class="btn btn-primary btn-block">
+          <i class="fas fa-plus"></i> Ajouter produit
+        </a>
+      </div>
+      <div class="col-md-3">
+        <a href="/searchProduct" class="btn btn-success btn-block">
+          <i class="fas fa-plus"></i> Modifier produit
+        </a>
+      </div>
+      <div class="col-md-3">
+        <a href="/deleteProduct" class="btn btn-warning btn-block">
+          <i class="fas fa-minus"></i> Supprimer produit
+        </a>
+      </div>
+      <div class="col-md-3">
+        <a href="/addAdmin" class="btn btn-success btn-block">
+          <i class="fas fa-plus"></i> Ajouter utilisateur
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POSTS -->
+<form action="/dashboard" method="post">
+  <section id="posts">
+    <div class="container">
+      <%- include('partials/messages'); -%>
+      <div class="row">
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-header">
+              <h4>Liste des produits</h4>
+            </div>
+            <table class="table table-striped">
+              <thead class="thead-dark">
+                <tr>
+                  <th>#</th>
+                  <th>Code Barre</th>
+                  <th>Produit</th>
+                  <th>Fournisseur</th>
+                  <th>Quantite</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% produits.forEach((produit, i) => { %>
+                <tr>
+                  <td><%- i+1%></td>
+                  <td><%- produit.codeBarre%></td>
+                  <td><%- produit.nomProduit%></td>
+                  <td><%- produit.fournisseur%></td>
+                  <td><%- produit.quantite%></td>
+                  <td>
+                    <%-(produit.date).getMonth()%>.<%-(produit.date).getDay()%>.<%-(produit.date).getFullYear()%>
+                  </td>
+                </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card text-center bg-primary text-white mb-3">
+            <div class="card-body">
+              <h3>Produits</h3>
+              <h4 class="display-4">
+                <i class="fas fa-pencil-alt"></i><%- nombreproduits%>
+              </h4>
+              <a href="/posts" class="btn btn-outline-light btn-sm">View</a>
+            </div>
+          </div>
+
+          <!-- <div class="card text-center bg-success text-white mb-3">
+            <div class="card-body">
+              <h3>Fournisseur</h3>
+              <h4 class="display-4">
+                <i class="fas fa-folder"></i>
+              </h4>
+              <a href="categories.html" class="btn btn-outline-light btn-sm"
+                >View</a
+              >
+            </div>
+          </div> -->
+
+          <div class="card text-center bg-warning text-white mb-3">
+            <div class="card-body">
+              <h3>Admins</h3>
+              <h4 class="display-4">
+                <i class="fas fa-users"></i> <%- adminstotal%>
+              </h4>
+              <a href="users.html" class="btn btn-outline-light btn-sm">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</form>
+
+<%- include('partials/footer'); -%>
